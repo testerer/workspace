@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.app.AlertDialog;
 
 
@@ -25,23 +26,14 @@ public class MainActivity extends Activity {
     
    public void retrieveQuestion()
    {
+	   TextView question = (TextView)findViewById(R.id.textView1);
 	   RadioGroup radioGroup = (RadioGroup)findViewById(R.id.radioGroup1);
 
-	    for (int i = 0; i < radioGroup .getChildCount(); i++) {
+	   for (int i = 0; i < radioGroup .getChildCount(); i++)
 	            ((RadioButton) radioGroup.getChildAt(i)).setText(String.valueOf(i));
-	        }
-
+	   question.setText("This is Question 1");
+	    	
    }
-    	
-    	/*
-    	RadioButton radio0= (RadioButton) ;
-    	
-    	RadioButton radio2 = new RadioButton(this);
-    	radio2.setText(R.string.Answer_1);
-    	
-    	RadioButton radio3 = new RadioButton(this);
-    	radio3.setText(R.string.Answer_1);
-    }*/
     
     
     public void onRadioButtonClicked(View view)
@@ -68,6 +60,7 @@ public class MainActivity extends Activity {
                 	button.setText("ME EPELEKSES!!!!");
 	            	dlgAlert.setMessage(button.getText());
 	            	dlgAlert.show();
+	            	retrieveQuestion();
                 break;
             case R.id.radio2:
                 if (checked)
@@ -82,7 +75,7 @@ public class MainActivity extends Activity {
 	            	dlgAlert.show();
                 break;
         }
-        retrieveQuestion();
+        
     }
 
     @Override
