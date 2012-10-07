@@ -29,7 +29,7 @@ import android.app.AlertDialog;
 	   RadioGroup radioGroup = (RadioGroup)findViewById(R.id.radioGroup1);
 
 	   for (int i = 0; i < radioGroup.getChildCount(); i++)
-	            ((RadioButton) radioGroup.getChildAt(i)).setText(String.valueOf(i+j));
+	            ((RadioButton) radioGroup.getChildAt(i)).setText(String.valueOf(j)+"."+String.valueOf(i+1));
 	   
 	   question.setText("This is Question "+String.valueOf(j));
 	   j++;
@@ -38,6 +38,7 @@ import android.app.AlertDialog;
    }
    
 
+   
    public void onRadioButtonClicked(View view)
    {
 	   AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
@@ -48,7 +49,7 @@ import android.app.AlertDialog;
 	   dlgAlert.create();
 	   boolean checked = ((RadioButton) view).isChecked();
 	   RadioButton button = (RadioButton) view;
-        
+	   
         // Check which radio button was clicked
        switch(view.getId()) 
        {
