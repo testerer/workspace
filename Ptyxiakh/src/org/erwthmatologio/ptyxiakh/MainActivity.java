@@ -86,6 +86,11 @@ import android.app.AlertDialog;
        retrieveQuestion();
         
    }
+   
+   protected void onPause() {
+       super.onPause();
+       j=1;
+   }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) 
