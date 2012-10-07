@@ -13,7 +13,7 @@ import android.app.AlertDialog;
 
    public class MainActivity extends Activity 
    {
-	
+	   
 	  @Override
           public void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
@@ -21,16 +21,19 @@ import android.app.AlertDialog;
           retrieveQuestion();   
    }
     
-    
-    
+	  static int j=1;
    public void retrieveQuestion()
    {
+	   
 	   TextView question = (TextView)findViewById(R.id.textView1);
 	   RadioGroup radioGroup = (RadioGroup)findViewById(R.id.radioGroup1);
 
 	   for (int i = 0; i < radioGroup.getChildCount(); i++)
-	            ((RadioButton) radioGroup.getChildAt(i)).setText(String.valueOf(i));
-	   question.setText("This is Question 1");
+	            ((RadioButton) radioGroup.getChildAt(i)).setText(String.valueOf(i+j));
+	   
+	   question.setText("This is Question "+String.valueOf(j));
+	   j++;
+	   
 	    	
    }
    
@@ -53,29 +56,33 @@ import android.app.AlertDialog;
 	           if (checked)
 	        	   
 	        	   button.setText("ME EPELEKSES!!!!");
+	           	   button.setChecked(false);
 		           dlgAlert.setMessage(button.getText());
 		           dlgAlert.show();
 		           break;
             case R.id.radio1:
                if (checked)
             	   button.setText("ME EPELEKSES!!!!");
+               	   button.setChecked(false);
 	           	   dlgAlert.setMessage(button.getText());
 	           	   dlgAlert.show();
-	           	   retrieveQuestion();
 	           	   break;
             case R.id.radio2:
                if (checked)
             	   button.setText("ME EPELEKSES!!!!");
+               	   button.setChecked(false);
 		           dlgAlert.setMessage(button.getText());
 		           dlgAlert.show();
 		           break;
             case R.id.radio3:
                if (checked)
 	               button.setText("ME EPELEKSES!!!!");
+                   button.setChecked(false);
 		           dlgAlert.setMessage(button.getText());
 		           dlgAlert.show();
 	               break;
        }
+       retrieveQuestion();
         
    }
 
