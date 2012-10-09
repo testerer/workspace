@@ -17,17 +17,43 @@ import android.app.AlertDialog;
 	   String[][] questions = new String[20][6];
 	   static int j=0;
 	   static int i=0;
+	   static int correct=0;
+	   static int questionnum=0;
 	   @Override
           public void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_main);
-          questions[0][0]="Alternate Question";
+          questions[0][0]="Alternate Question 1";
           questions[0][1]="Correct 1";
           questions[0][2]="Correct 2";
           questions[0][3]="Correct 3";
           questions[0][4]="Correct 4";
           questions[0][5]="4";
-          retrieveQuestion();   
+          questions[1][0]="Alternate Question 2";
+          questions[1][1]="Correct 1";
+          questions[1][2]="Correct 2";
+          questions[1][3]="Correct 3";
+          questions[1][4]="Correct 4";
+          questions[1][5]="2";
+          questions[2][0]="Alternate Question 3";
+          questions[2][1]="Correct 1";
+          questions[2][2]="Correct 2";
+          questions[2][3]="Correct 3";
+          questions[2][4]="Correct 4";
+          questions[2][5]="1";
+          questions[3][0]="Alternate Question 4";
+          questions[3][1]="Correct 1";
+          questions[3][2]="Correct 2";
+          questions[3][3]="Correct 3";
+          questions[3][4]="Correct 4";
+          questions[3][5]="3";
+          questions[4][0]="Alternate Question 5";
+          questions[4][1]="Correct 1";
+          questions[4][2]="Correct 2";
+          questions[4][3]="Correct 3";
+          questions[4][4]="Correct 4";
+          questions[4][5]="1";
+          retrieveQuestion();
    }
     
 	  
@@ -55,28 +81,40 @@ import android.app.AlertDialog;
 	   dlgAlert.setPositiveButton("OK", null);
 	   dlgAlert.setCancelable(false);
 	   dlgAlert.create();
+	   
 	   RadioButton button = (RadioButton) view;
 	   RadioGroup radioGroup = (RadioGroup)findViewById(R.id.radioGroup1);
+	   
 	   int k=Integer.parseInt(questions[j-1][i+1]);
 	   boolean checked = ((RadioButton) radioGroup.getChildAt(k-1)).isChecked();
 	   
-	   if (checked)
+
+	   if ((checked)&&(questionnum<5))
 	   {
-                   button.setChecked(false);
-		           dlgAlert.setMessage("Correct!");
-		           dlgAlert.show();
+           button.setChecked(false);
+		   correct++;
+		   questionnum++;
 	   }
 	   else
 	   {
            button.setChecked(false);
-           dlgAlert.setMessage("False!!!!!!");
-           dlgAlert.show();
+           questionnum++;
+	   }
+	   
+	   if (questionnum<5)
+		   retrieveQuestion();
+	   else
+	   {
+		   dlgAlert.setMessage(String.valueOf(correct)+"/"+String.valueOf(questionnum)+" are correct!");
+		   dlgAlert.show();
 	   }
    }
    
    protected void onPause() {
        super.onPause();
        j=0;
+       correct=0;
+       questionnum=0;
    }
 
     @Override
